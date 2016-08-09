@@ -145,14 +145,14 @@ func (this *Server) quitHandler(client *common.Client) {
  接收消息处理方法
 */
 func (this *Server) receivedHandler(request common.IMRequest) {
-//	log.Println("开始读取数据")
-//	log.Println("读取的数据为", request)
+	log.Println("开始读取数据")
+	log.Println("读取的数据为", request)
 
 	// 获取请求的客户端
 	client := request.Client
 	// 获取请求数据
 	reqData := request.Data
-//	log.Printf("客户端:[%s]发送命令:[%s]消息内容:[%s]", client.Key, request.Command, request.Data)
+	log.Printf("客户端:[%s]发送命令:[%s]消息内容:[%s]", client.Key, request.Command, request.Data)
 
 	// 未登录业务处理部分
 	switch request.Command {
@@ -169,7 +169,7 @@ func (this *Server) receivedHandler(request common.IMRequest) {
 			return
 		}
 		client.Login = login
-//		log.Printf("登录比较：token=%s Login=%s", token, client.Login)
+		log.Printf("登录比较：token=%s Login=%s", token, client.Login)
 		if !strings.EqualFold(client.Login.Token, token) {
 			client.PutOut(common.NewIMResponseSimple(302, "该用户令牌无效!", common.GET_CONN_RETURN))
 			return
