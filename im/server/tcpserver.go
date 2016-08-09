@@ -137,7 +137,7 @@ func (this *Server) quitHandler(client *common.Client) {
 		client.Close()
 		delete(this.clients, client.Key)
 
-//		log.Printf("客户端退出: %s online:%d", client.Key, len(ClientMaps))
+		log.Printf("客户端退出: %s online:%d", client.Key, len(ClientMaps))
 	}
 }
 
