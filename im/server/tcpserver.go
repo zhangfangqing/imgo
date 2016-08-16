@@ -168,6 +168,7 @@ func (this *Server) receivedHandler(request common.IMRequest) {
 			client.PutOut(common.NewIMResponseSimple(300, err.Error(), common.GET_CONN_RETURN))
 			return
 		}
+
 		client.Login = login
 		log.Printf("登录比较：token=%s Login=%s", token, client.Login)
 		if !strings.EqualFold(client.Login.Token, token) {
